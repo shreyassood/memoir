@@ -1,0 +1,173 @@
+<html>
+<head>
+	<title>Memoir</title>
+	  <link rel="stylesheet" type="text/css" href="main.css">
+		<script type="text/javascript" src = "bower_components/hello/dist/hello.all.min.js"></script>
+	<!--<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>-->
+		<script type="text/javascript" src = "main.js"></script>
+		<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js">
+    </script>
+
+    <!-- 2. Use an HTML Import to bring in some elements. -->
+    <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+       <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+        <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+
+        <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+
+         <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+
+   <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+
+   <link rel="import" href="bower_components/paper-card/paper-card.html">
+
+   <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+
+  
+
+  <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <!-- <link rel="import" href="bower_components/paper-elemts/paper-input.html"> -->
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+   <script src="ckeditor/ckeditor.js"></script>
+
+</head>
+<body onload = "donel()">
+	<paper-toolbar>
+  <!-- <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button> -->
+  <div class="title">My Albums</div>
+   <paper-icon-button icon="more-vert" onclick="abdiag.open()"></paper-icon-button>
+</paper-toolbar>
+	<!-- <button onclick="addtrip()">Add Trip</button> -->
+
+
+<div id="main-con" class="row">
+
+</div>
+
+	<div class="fab"><paper-fab icon="add" onclick="openD()">+</paper-fab></div>
+
+	
+
+	
+        <paper-dialog id="modal" modal>
+
+        <paper-input label="Trip Name" id="tname"></paper-input>
+
+
+      <form>
+            <h2>Describe your memories here...</h2>
+                <br/>
+                Insert images from your Google Photos by selecting the click image button
+            <textarea name="editor1" id="editor1" rows="10" cols="80" >
+
+            </textarea>
+
+            <script>
+
+            var editor;
+                // Replace the <textarea id="editor1"> with a CKEdtor
+                // instance, using default configuration.
+                
+                CKEDITOR.on('instanceReady', function (ev) {
+
+        // Create a new command with the desired exec function
+        editor = ev.editor;
+
+
+        var overridecmd = new CKEDITOR.command(editor, {
+            exec: function(editor){
+                // Replace this with your desired save button code
+                var url = "https://yt3.ggpht.com/-ni4UFdyRjys/AAAAAAAAAAI/AAAAAAAAAAA/Ca0Ed9E-s4I/s900-c-k-no/photo.jpg";
+
+                
+
+                getIMG();
+            }
+        });
+
+        // Replace the old save's exec function with the new one
+        ev.editor.commands.image.exec = overridecmd.exec;
+    });
+
+
+
+                CKEDITOR.replace( 'editor1' );
+
+
+
+
+            </script>
+        </form>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Decline</paper-button>
+        <paper-button dialog-confirm autofocus onclick="subentry()">Accept</paper-button>
+      </div>
+    </paper-dialog>
+
+    <paper-dialog id="selector" style="width:700px">
+      <h2>Select an Image</h2>
+
+      <div id = "content">
+	</div>
+
+      <div class="buttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+      </div>
+
+
+    </paper-dialog>
+
+    <paper-dialog id="about" style="width:700px;text-align:center;font-size:120%">
+    <br/>
+          Developed by <b>Animesh Garg</b> and <b>Shreyas Sood</b>
+          <br/><br/>
+
+    </paper-dialog>
+
+    <paper-dialog id="logcon" modal>
+
+    <div id="logconcon">
+    </div>
+
+    <div class="buttons">
+        <paper-button dialog-dismiss>Close</paper-button>
+      </div>
+
+	</paper-dialog>
+
+
+  <div class="landing v-wrap" id="landing">
+      <div class="v-box" onclick=
+    "hello('google').login({scope:'photos'})">
+        <div class="row">
+            <div class="large-12 columns kbye" >
+                <img class="memoir" src="img/memoir.png"> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns lol">
+                <img class="login" src=
+                "google_signin_buttons/web/2x/btn_google_signin_light_normal_web@2x.png">
+                
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+
+
+
+
+
+</body>
+</html>
